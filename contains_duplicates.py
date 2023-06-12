@@ -66,16 +66,22 @@ def is_duplicate(nums):
   # return False
 
   # Approach # 5 # counter class
-  counter = defaultdict(int)
+#   counter = defaultdict(int)
 
-  for n in nums:
-    counter[n] += 1
+#   for n in nums:
+#     counter[n] += 1
 
-  for val in counter.values():
-    if val > 1:
-      return True
-  return False
-  
+#   for val in counter.values():
+#     if val > 1:
+#       return True
+#   return False
+    hashSet = set()
+    for i in nums:
+        if i in hashSet:
+            return True
+        hashSet.add(i)
+    
+    return False
 
 
 print(is_duplicate([1,2,3,1])) # true
