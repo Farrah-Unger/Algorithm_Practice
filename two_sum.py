@@ -20,16 +20,16 @@ Input: nums = [3,3], target = 6
 Output: [0,1]
 '''
 
-def two_sum(nums, target):
-  # Approach 1 # ENUMERATE function
+# def two_sum(nums, target):
+#   # Approach 1 # ENUMERATE function
 
-  lookup = {}  
-  for index, num in enumerate(nums):
-    second_num = target - num
-    if second_num in lookup:
-      return[lookup[second_num],index]
-    lookup[nums[index]] = index  
-  return []
+#   lookup = {}  
+#   for index, num in enumerate(nums):
+#     second_num = target - num
+#     if second_num in lookup:
+#       return[lookup[second_num],index]
+#     lookup[nums[index]] = index  
+#   return []
 
   # Approach # 2 # hash map #
  # lookup = {}
@@ -42,8 +42,28 @@ def two_sum(nums, target):
  
   # # Both solutions: time O(n) -> n is len of nums list, iterates through list once, performing constant time operations for each element. Space O(n) -> dictionary stores n key-value pairs, resulting in O(n) space. 
     
-print(two_sum([3,4,1], 0))
-print(two_sum([2,7,11,15], 9)) # [0,1]
-print(two_sum([3,2,4], 6)) # [1,2]
-print(two_sum([3,3], 6)) # [0,1]
-      
+# print(two_sum([3,4,1], 0))
+# print(two_sum([2,7,11,15], 9)) # [0,1]
+# print(two_sum([3,2,4], 6)) # [1,2]
+# print(two_sum([3,3], 6)) # [0,1]
+
+def two_sum(arr, target):
+  
+  if not arr:
+    return []
+
+  hash_map = {}
+  result = []
+
+  for index, num in enumerate(arr):
+    total = target - num
+    if total in hash_map:
+      return [hash_map[total], index]
+    hash_map[num] = index
+
+  return []
+
+  
+
+print(two_sum([2, 7, 11, 15], 9))
+print(two_sum([], 5))
