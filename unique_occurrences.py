@@ -26,6 +26,7 @@ def unique_occurrences(arr):
             unique_hash[num] += 1
 
     set_count = set(unique_hash.values())
+    
 
     if len(set_arr) == len(set_count):
         return True
