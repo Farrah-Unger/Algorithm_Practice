@@ -458,7 +458,188 @@ Input Format
 
 A single string  that represents a time in -hour clock format (i.e.:  or ).'''
 
-def timeConversion(s):
-    pass
+# def timeConversion(s):
+#     pass
 
-print(timeConversion('12:01:00'))
+# print(timeConversion('12:01:00'))
+
+'''HackerLand University has the following grading policy:
+
+Every student receives a  in the inclusive range from  to .
+Any  less than  is a failing grade.
+Sam is a professor at the university and likes to round each student's  according to these rules:
+
+If the difference between the grade and the next multiple of 5 is less than 3, round  up to the next multiple of 5.
+If the value of grade is less than 38, no rounding occurs as the result will still be a failing grade.
+Examples
+
+84 round to  (85 - 84 is less than 3)
+29 do not round (result is less than 40)
+57 do not round (60 - 57 is 3 or higher)
+Given the initial value of  for each of Sam's  students, write code to automate the rounding process.
+
+Function Description
+
+Complete the function gradingStudents in the editor below.
+
+gradingStudents has the following parameter(s):
+
+int grades[n]: the grades before rounding
+Returns
+
+int[n]: the grades after rounding as appropriate'''
+
+
+
+# print(floor(82))
+
+
+# def gradingStudents(grades):
+
+#     def myround(x, base=5):
+#         return base * round(x/base)
+
+#     result = []
+
+#     for grade in grades:
+#         update = myround(grade, base=5)
+#         if grade < 38:
+#             result.append(grade)
+#         elif update - grade == 2 or update - grade == 1:
+#             result.append(update)
+#         else:
+#             result.append(grade)
+
+#     return result
+        
+# print(gradingStudents([73,67,38,33]))
+
+'''739. Daily Temperatures
+Medium
+
+Given an array of integers temperatures represents the daily temperatures, return 
+an array answer such that answer[i] is the number of days you have to wait after 
+the ith day to get a warmer temperature. If there is no future day for which this 
+is possible, keep answer[i] == 0 instead.
+
+Example 1:
+Input: temperatures = [73,74,75,71,69,72,76,73]
+Output: [1,1,4,2,1,1,0,0]
+
+Example 2:
+Input: temperatures = [30,40,50,60]
+Output: [1,1,1,0]
+
+Example 3:
+Input: temperatures = [30,60,90]
+Output: [1,1,0]
+
+Constraints:
+1 <= temperatures.length <= 105
+30 <= temperatures[i] <= 100
+'''
+# Pseudocode
+# Initialize result list
+# Initialize days_counter as a variable (inside of for loop)
+# Iterate through temperatures
+# If the next temperature is greater than the current, increment days_counter 
+    # Append days_counter to result list
+# If the the next temp is lower than current, add 1 to days_counter and continue
+# If we're at temperatures[-1], append 0 to result list 
+# Return result list
+
+# def dailyTemperatures(temperatures):
+#     result = []
+#     days_counter = 0
+
+
+
+#     for i in range(len(temperatures)-1):
+#         current_temp = temperatures[i]
+#         comparison_day = i + 1 # right pointer      
+        
+#         if current_temp > temperatures[comparison_day]: # 75 > 71
+#             days_counter += 1
+#             comparison_day += 1
+#             # for loop or while loop here?
+            
+#         elif current_temp < temperatures[comparison_day]: # 
+#             days_counter += 1
+#             result.append(days_counter)
+#             days_counter = 0
+    
+
+#     if temperatures[-1]:
+#         result.append(0)
+        
+#     print(result)
+
+# print(dailyTemperatures([73,74,75,71,69,72,76,73])) 
+# print(dailyTemperatures([73,74,75,71,69,72,76,73])) #[1,1,4,2,1,1,0,0]
+# print(dailyTemperatures([30,40,50,60])) #[1,1,1,0]
+# print(dailyTemperatures([30,60,90])) # [1,1,0]
+
+'''You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+
+Merge nums1 and nums2 into a single array sorted in non-decreasing order.
+
+The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, 
+and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
+
+ 
+
+Example 1:
+
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+Example 2:
+
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+Explanation: The arrays we are merging are [1] and [].
+The result of the merge is [1].
+Example 3:
+
+Input: nums1 = [0], m = 0, nums2 = [1], n = 1
+Output: [1]
+Explanation: The arrays we are merging are [] and [1].
+The result of the merge is [1].
+Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.'''
+
+# Hint: Since you're merging nums2 into the nums1 array, you can start by positioning the pointers at the end of both arrays (m + n - 1 for nums1 and n - 1 for nums2). 
+# This allows you to work in a "backwards" manner, which can help avoid overwriting elements in nums1 and make it easier to handle the zeroes.
+
+# Now, as you iterate through the arrays from the end, compare the elements at the current positions of the pointers. If the element from nums1 is larger, place it at the end of the merged array (position m + n - 1) 
+# and decrement the pointer for nums1. If the element from nums2 is larger, place it at the end of the merged array and decrement the pointer for nums2.
+
+
+
+def merge(nums1, m, nums2, n) -> None:
+    """
+    Do not return anything, modify nums1 in-place instead.
+    """
+
+    last = m + n-1
+
+    while m > 0 and n > 0:
+        if nums1[m -1] > nums2[n-1]:
+            nums1[last] = nums1[m-1]
+            m -= 1
+        else:
+            nums1[last] = nums2[n-1]
+            n -= 1
+        last -= 1
+
+    while n > 0:
+        nums1[last] = nums2[n-1]
+        n, last = n -1, last -1
+    
+    
+    return nums1
+
+
+print(merge([1,2,3,0,0,0], 3, [2,5,6], 3)) # [1,2,2,3,5,6]
+print(merge([1], 1, [], 0)) # [1]
+print(merge([0], 0, [1], 1)) # [1]
